@@ -1,4 +1,4 @@
-package com.laboratorio.laboratorio_reservas.services;
+package com.laboratorio.laboratorio_reservas;
 
 import java.util.Collections;
 import java.util.Date;
@@ -27,6 +27,7 @@ import com.laboratorio.laboratorio_reservas.models.Laboratorio;
 import com.laboratorio.laboratorio_reservas.models.Reserva;
 import com.laboratorio.laboratorio_reservas.repositories.LaboratorioRepository;
 import com.laboratorio.laboratorio_reservas.repositories.ReservaRepository;
+import com.laboratorio.laboratorio_reservas.services.ReservaService;
 
 @ExtendWith(MockitoExtension.class)
 class ReservaServiceTest {
