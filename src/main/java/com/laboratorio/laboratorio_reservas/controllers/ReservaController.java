@@ -2,30 +2,42 @@ package com.laboratorio.laboratorio_reservas.controllers;
 
 import com.laboratorio.laboratorio_reservas.models.Reserva;
 import com.laboratorio.laboratorio_reservas.services.ReservaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/reservas")
 public class ReservaController {
 
-    @Autowired
-    private ReservaService reservaService;
+  private final ReservaService reservaService;
 
-    @PostMapping
-    public Reserva crearReserva(@RequestBody Reserva reserva) {
-        return reservaService.crearReserva(reserva);
-    }
+  @Autowired
+  public ReservaController(ReservaService reservaService) {
+    this.reservaService = reservaService;
+  }
 
-    @DeleteMapping("/{id}")
-    public void cancelarReserva(@PathVariable String id) {
-        reservaService.cancelarReserva(id);
-    }
+  @PostMapping
+  public Reserva crearReserva(@RequestBody ReservaDTO reservaDTO) {
+    Reserva reserva = new Reserva();
+    reserva.setIdLaboratorio(reservaDTO.getIdLaboratorio());
+    reserva.setUsuario(reservaDTO.getUsuario());
+    reserva.setFecha(reservaDTO.getFecha());
+    reserva.setHoraInicio(reservaDTO.getHoraInicio());
+    reserva.setHoraFin(reservaDTO.getHoraFin());
+    reserva.setProposito(reservaDTO.getProposito());
+    reserva.setEstado(reservaDTO.getEstado());
 
-    @GetMapping
-    public List<Reserva> listarReservas() {
-        return reservaService.listarReservas();
-    }
+    return reservaService.crearReserva(reserva);
+  }
+
+  @DeleteMapping("/{id}")
+  public void cancelarReserva(@PathVariable String id) {
+    reservaService.cancelarReserva(id);
+  }
+
+  @GetMapping
+  public List<Reserva> listarReservas() {
+    return reservaService.listarReservas();
+  }
 }
