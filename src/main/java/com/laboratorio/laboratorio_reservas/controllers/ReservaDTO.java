@@ -13,87 +13,105 @@ public class ReservaDTO {
   private String proposito;
   private String estado;
 
-  public ReservaDTO(
-    String id,
-    String idLaboratorio,
-    String usuario,
-    Date fecha,
-    String horaInicio,
-    String horaFin,
-    String proposito,
-    String estado
-  ) {
-    this.id = id;
-    this.idLaboratorio = idLaboratorio;
-    this.usuario = usuario;
-    this.fecha = fecha;
-    this.horaInicio = horaInicio;
-    this.horaFin = horaFin;
-    this.proposito = proposito;
-    this.estado = estado;
+  // Constructor vacío necesario para la deserialización de JSON
+  public ReservaDTO() {}
+
+  private ReservaDTO(Builder builder) {
+    this.id = builder.id;
+    this.idLaboratorio = builder.idLaboratorio;
+    this.usuario = builder.usuario;
+    this.fecha = builder.fecha;
+    this.horaInicio = builder.horaInicio;
+    this.horaFin = builder.horaFin;
+    this.proposito = builder.proposito;
+    this.estado = builder.estado;
+  }
+
+  public static class Builder {
+
+    private String id;
+    private String idLaboratorio;
+    private String usuario;
+    private Date fecha;
+    private String horaInicio;
+    private String horaFin;
+    private String proposito;
+    private String estado;
+
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder idLaboratorio(String idLaboratorio) {
+      this.idLaboratorio = idLaboratorio;
+      return this;
+    }
+
+    public Builder usuario(String usuario) {
+      this.usuario = usuario;
+      return this;
+    }
+
+    public Builder fecha(Date fecha) {
+      this.fecha = fecha;
+      return this;
+    }
+
+    public Builder horaInicio(String horaInicio) {
+      this.horaInicio = horaInicio;
+      return this;
+    }
+
+    public Builder horaFin(String horaFin) {
+      this.horaFin = horaFin;
+      return this;
+    }
+
+    public Builder proposito(String proposito) {
+      this.proposito = proposito;
+      return this;
+    }
+
+    public Builder estado(String estado) {
+      this.estado = estado;
+      return this;
+    }
+
+    public ReservaDTO build() {
+      return new ReservaDTO(this);
+    }
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public String getIdLaboratorio() {
     return idLaboratorio;
-  }
-
-  public void setIdLaboratorio(String idLaboratorio) {
-    this.idLaboratorio = idLaboratorio;
   }
 
   public String getUsuario() {
     return usuario;
   }
 
-  public void setUsuario(String usuario) {
-    this.usuario = usuario;
-  }
-
   public Date getFecha() {
     return fecha;
-  }
-
-  public void setFecha(Date fecha) {
-    this.fecha = fecha;
   }
 
   public String getHoraInicio() {
     return horaInicio;
   }
 
-  public void setHoraInicio(String horaInicio) {
-    this.horaInicio = horaInicio;
-  }
-
   public String getHoraFin() {
     return horaFin;
-  }
-
-  public void setHoraFin(String horaFin) {
-    this.horaFin = horaFin;
   }
 
   public String getProposito() {
     return proposito;
   }
 
-  public void setProposito(String proposito) {
-    this.proposito = proposito;
-  }
-
   public String getEstado() {
     return estado;
-  }
-
-  public void setEstado(String estado) {
-    this.estado = estado;
   }
 }
