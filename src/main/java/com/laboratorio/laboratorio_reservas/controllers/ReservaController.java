@@ -17,7 +17,7 @@ public class ReservaController {
     this.reservaService = reservaService;
   }
 
-  @PostMapping
+@PostMapping
   public Reserva crearReserva(@RequestBody ReservaDTO reservaDTO) {
     Reserva reserva = new Reserva();
     reserva.setIdLaboratorio(reservaDTO.getIdLaboratorio());
